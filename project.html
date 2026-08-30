@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Case Study — Cactus Ethiopia</title>
+<meta name="description" content="A closer look at a Cactus Ethiopia campaign case study.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<!-- ============ HEADER ============ -->
+<header id="siteHeader">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo" aria-label="Cactus Ethiopia home">
+      <svg class="logo-mark" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M14 26V10a4 4 0 0 1 4-4" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M14 26V6" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M14 26V15a4 4 0 0 0-4-4" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M14.2 9.5h-2.1M14.2 13.5h2.1M14.2 17.5h-2.1M14.2 21.5h2.1" stroke="#a3e635" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      CACTUS<span class="thin">&nbsp;ETHIOPIA</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="work.html" class="active" aria-current="page">Work</a>
+      <a href="services.html">Services</a>
+      <a href="impact.html">Impact</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="btn btn-primary mobile-cta">Start a Project</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="contact.html" class="btn btn-primary">Start a Project</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PROJECT DETAIL (populated by script at the bottom) ============ -->
+<main id="projectContent" class="project-detail"></main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <a href="index.html" class="logo">
+        <svg class="logo-mark" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 26V10a4 4 0 0 1 4-4" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M14 26V6" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M14 26V15a4 4 0 0 0-4-4" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M14.2 9.5h-2.1M14.2 13.5h2.1M14.2 17.5h-2.1M14.2 21.5h2.1" stroke="#a3e635" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        CACTUS<span class="thin">&nbsp;ETHIOPIA</span>
+      </a>
+      <div class="footer-links">
+        <a href="work.html">Work</a>
+        <a href="services.html">Services</a>
+        <a href="impact.html">Impact</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Cactus Ethiopia. All rights reserved.</span>
+      <span>Addis Ababa, Ethiopia</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/portfolio-data.js"></script>
+<script>
+  (function renderProject(){
+    var mount = document.getElementById('projectContent');
+    if (!mount) return;
+
+    var params = new URLSearchParams(window.location.search);
+    var id = params.get('id');
+    var item = (window.PORTFOLIO || []).find(function(p){ return p.slug === id; });
+
+    var FALLBACK_IMG = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=80';
+
+    if (!item) {
+      mount.innerHTML =
+        '<section class="section" style="padding-top:172px;">' +
+          '<div class="container" style="text-align:center;">' +
+            '<p class="eyebrow" style="justify-content:center;">Case Study</p>' +
+            '<h1 style="font-size:clamp(28px,4vw,44px); margin-bottom:16px;">Project not found</h1>' +
+            '<p style="color:var(--text-muted); margin-bottom:32px;">We couldn\u2019t find a case study matching that link.</p>' +
+            '<a href="work.html" class="btn btn-primary">Back to Work</a>' +
+          '</div>' +
+        '</section>';
+      return;
+    }
+
+    document.getElementById('pageTitle').textContent = item.title.charAt(0) + item.title.slice(1).toLowerCase() + ' — Cactus Ethiopia';
+
+    var metaParts = [];
+    metaParts.push('<span><b>CLIENT:</b> ' + item.client + '</span>');
+    if (item.brand) metaParts.push('<span><b>BRAND:</b> ' + item.brand + '</span>');
+    metaParts.push('<span><b>CATEGORY:</b> ' + item.category + '</span>');
+    metaParts.push('<span><b>MARKET:</b> ' + item.market + '</span>');
+    metaParts.push('<span><b>FIELDS:</b> ' + item.fields.join(', ') + '</span>');
+
+    var paragraphs = item.desc.map(function(p){ return '<p>' + p + '</p>'; }).join('');
+
+    var otherProjects = window.PORTFOLIO.filter(function(p){ return p.slug !== item.slug; });
+    // simple deterministic pick of 3 "more work" links
+    var more = otherProjects.slice(0, 3).map(function(p){
+      return '<a class="more-link" href="project.html?id=' + p.slug + '">' +
+        '<span class="more-link-title">&ldquo;' + p.title + '&rdquo;</span>' +
+        '<span class="more-link-client">' + p.client + '</span>' +
+      '</a>';
+    }).join('');
+
+    mount.innerHTML =
+      '<section class="project-hero">' +
+        '<div class="container">' +
+          '<p class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="work.html">Work</a> <span>/</span> <span>' + item.title.charAt(0) + item.title.slice(1).toLowerCase() + '</span></p>' +
+          '<h1 class="project-title">' + item.title + '</h1>' +
+          '<p class="project-meta">' + metaParts.join('<span class="meta-sep">&middot;</span>') + '</p>' +
+          '<div class="project-desc">' + paragraphs + '</div>' +
+        '</div>' +
+      '</section>' +
+
+      '<section class="project-media">' +
+        '<img src="' + item.image + '" alt="' + item.title + ' campaign visual — ' + item.client + '" ' +
+          'onerror="this.onerror=null; this.src=\'' + FALLBACK_IMG + '\';">' +
+      '</section>' +
+
+      '<section class="section" id="more-work">' +
+        '<div class="container">' +
+          '<div class="section-head reveal">' +
+            '<div>' +
+              '<p class="eyebrow">Keep Exploring</p>' +
+              '<h2>More case studies.</h2>' +
+            '</div>' +
+            '<a href="work.html" class="btn btn-outline">View All Work</a>' +
+          '</div>' +
+          '<div class="more-grid">' + more + '</div>' +
+        '</div>' +
+      '</section>';
+  })();
+</script>
+<script src="assets/main.js"></script>
+</body>
+</html>
