@@ -15,11 +15,11 @@
 <header id="siteHeader">
   <div class="container nav-inner">
     <a href="index.html" class="logo" aria-label="Cactus Ethiopia home">
-      <svg class="logo-mark" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M14 26V10a4 4 0 0 1 4-4" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
-        <path d="M14 26V6" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
-        <path d="M14 26V15a4 4 0 0 0-4-4" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
-        <path d="M14.2 9.5h-2.1M14.2 13.5h2.1M14.2 17.5h-2.1M14.2 21.5h2.1" stroke="#a3e635" stroke-width="1.3" stroke-linecap="round"/>
+      <svg class="logo-mark" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="16" cy="33" rx="7" ry="3" fill="#10B981"/>
+        <rect x="13" y="4" width="6" height="30" rx="3" fill="#10B981"/>
+        <rect x="2" y="12" width="6" height="15" rx="3" fill="#10B981"/>
+        <rect x="24" y="16" width="6" height="15" rx="3" fill="#10B981"/>
       </svg>
       CACTUS<span class="thin">&nbsp;ETHIOPIA</span>
     </a>
@@ -216,39 +216,7 @@
       <a href="work.html" class="btn btn-outline">View All Work</a>
     </div>
 
-    <div class="work-grid teaser-grid">
-
-      <a class="work-card reveal" href="work.html">
-        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80" alt="DSTV channel launch campaign visual" loading="lazy">
-        <span class="work-badge">+<strong>12M</strong> Reach</span>
-        <div class="work-meta">
-          <span class="work-tag">Tease &amp; Reveal Campaign</span>
-          <h3 class="work-title">Who Became Us</h3>
-          <p class="work-client">MultiChoice / DSTV</p>
-        </div>
-      </a>
-
-      <a class="work-card reveal" href="work.html">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="Bank of Abyssinia gold card digital campaign" loading="lazy">
-        <span class="work-badge"><strong>34%</strong> CTR lift</span>
-        <div class="work-meta">
-          <span class="work-tag">Digital &amp; Social</span>
-          <h3 class="work-title">Gold Card Launch</h3>
-          <p class="work-client">Bank of Abyssinia</p>
-        </div>
-      </a>
-
-      <a class="work-card reveal" href="work.html">
-        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80" alt="Out of home billboard campaign in Addis Ababa" loading="lazy">
-        <span class="work-badge"><strong>140</strong> OOH sites</span>
-        <div class="work-meta">
-          <span class="work-tag">Out-of-Home</span>
-          <h3 class="work-title">Freshness Rewritten</h3>
-          <p class="work-client">Unilever</p>
-        </div>
-      </a>
-
-    </div>
+    <div class="work-grid teaser-grid" id="workTeaserGrid"></div>
   </div>
 </section>
 
@@ -262,7 +230,7 @@
       <a href="about.html" class="btn-ghost">Our full story &rarr;</a>
     </div>
     <div class="about-visual reveal">
-      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80" alt="Cactus Ethiopia creative team collaborating in the Addis Ababa studio" loading="lazy">
+      <img src="https://www.2merkato.com/images/mtree/listings/m/33818.jpg" alt="Cactus Ethiopia" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80';">
     </div>
   </div>
 </section>
@@ -287,12 +255,12 @@
   <div class="container">
     <div class="footer-top">
       <a href="index.html" class="logo">
-        <svg class="logo-mark" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M14 26V10a4 4 0 0 1 4-4" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
-          <path d="M14 26V6" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
-          <path d="M14 26V15a4 4 0 0 0-4-4" stroke="#10b981" stroke-width="3.2" stroke-linecap="round"/>
-          <path d="M14.2 9.5h-2.1M14.2 13.5h2.1M14.2 17.5h-2.1M14.2 21.5h2.1" stroke="#a3e635" stroke-width="1.3" stroke-linecap="round"/>
-        </svg>
+        <svg class="logo-mark" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="16" cy="33" rx="7" ry="3" fill="#10B981"/>
+        <rect x="13" y="4" width="6" height="30" rx="3" fill="#10B981"/>
+        <rect x="2" y="12" width="6" height="15" rx="3" fill="#10B981"/>
+        <rect x="24" y="16" width="6" height="15" rx="3" fill="#10B981"/>
+      </svg>
         CACTUS<span class="thin">&nbsp;ETHIOPIA</span>
       </a>
       <div class="footer-links">
@@ -311,6 +279,35 @@
 </footer>
 
 
+<script src="assets/portfolio-data.js"></script>
+<script>
+  (function renderHomeTeaser(){
+    var grid = document.getElementById('workTeaserGrid');
+    if (!grid || !window.PORTFOLIO) return;
+
+    // Same 3 campaigns shown in the homepage teaser and on work.html —
+    // picked from the shared data file so they can never drift out of sync.
+    var slugs = ['dstv-became-us', 'boa-visa', 'heineken'];
+
+    var html = slugs.map(function(slug){
+      var item = window.PORTFOLIO.find(function(p){ return p.slug === slug; });
+      if (!item) return '';
+      var titleCase = item.title.charAt(0) + item.title.slice(1).toLowerCase();
+      return (
+        '<a class="work-card reveal" href="project.html?id=' + item.slug + '">' +
+          '<img src="' + item.image + '" alt="' + item.title + ' campaign visual — ' + item.client + '" loading="lazy">' +
+          '<div class="work-meta">' +
+            '<span class="work-tag">' + item.fields[0] + '</span>' +
+            '<h3 class="work-title">' + titleCase + '</h3>' +
+            '<p class="work-client">' + item.client + (item.brand ? ' / ' + item.brand : '') + '</p>' +
+          '</div>' +
+        '</a>'
+      );
+    }).join('');
+
+    grid.innerHTML = html;
+  })();
+</script>
 <script src="assets/main.js"></script>
 </body>
 </html>

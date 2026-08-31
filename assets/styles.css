@@ -20,7 +20,7 @@
   }
 
   *,*::before,*::after{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *,*::before,*::after{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
@@ -625,16 +625,17 @@
     font-weight:700;
   }
   .contact-block .value{ font-size:16px; color:var(--text-light); }
-  .social-row{ display:flex; gap:14px; margin-top:32px; }
+  .social-row{ display:flex; gap:12px; margin-top:32px; flex-wrap:wrap; }
   .social-row a{
     width:42px; height:42px;
     border:1px solid var(--border-strong);
     border-radius:50%;
     display:flex; align-items:center; justify-content:center;
-    font-size:13px; font-weight:700;
+    color:var(--text-muted);
     transition:all .3s var(--ease);
   }
-  .social-row a:hover{ border-color:var(--accent-green); color:var(--accent-green); transform:translateY(-3px); }
+  .social-row a svg{ width:18px; height:18px; display:block; }
+  .social-row a:hover{ border-color:var(--accent-green); color:var(--accent-green); transform:translateY(-3px); box-shadow:0 8px 20px -8px rgba(16,185,129,0.5); }
 
   .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
   .field{ display:flex; flex-direction:column; gap:8px; }
@@ -1134,4 +1135,79 @@
   @media (max-width:420px){
     .highlight-grid{ gap:14px; }
     .highlight-card{ padding:26px 16px; }
+  }
+
+  /* ============ PHONE-MODE FIXES ============ */
+  @media (max-width:768px){
+    /* 1. Hero headline: fluid clamp with a much lower floor than the
+       desktop clamp(40px,...) so long uppercase text can't force overflow
+       on narrow phones. */
+    .hero h1{
+      font-size:clamp(1.75rem, 5vw, 2.5rem);
+    }
+    .page-hero h1{
+      font-size:clamp(1.6rem, 6vw, 2.2rem);
+    }
+    .project-title{
+      font-size:clamp(1.75rem, 7vw, 2.75rem);
+    }
+
+    /* Hero + page containers: explicit tight padding, guaranteed to stay
+       inside the viewport (box-sizing:border-box is already global). */
+    .hero .container,
+    .page-hero .container,
+    .project-hero .container{
+      max-width:100%;
+      padding:0 16px;
+    }
+
+    /* 2. Case-study card titles: fluid instead of fixed, plus safe
+       wrapping for long single tokens. */
+    .case-title{
+      font-size:clamp(1.2rem, 4vw, 1.6rem);
+      word-break:break-word;
+      overflow-wrap:break-word;
+    }
+    .work-title{
+      font-size:clamp(1.1rem, 4.5vw, 1.375rem);
+      word-break:break-word;
+      overflow-wrap:break-word;
+    }
+
+    /* Metadata pills/chips: this is the actual overflow bug — nowrap text
+       inside a chip that can't shrink pushes the row past the viewport
+       edge. Let long values wrap onto a second line inside the chip
+       instead, and break ultra-long single words (e.g. long client or
+       ministry names) as a last resort. */
+    .meta-chips, .field-chips, .project-meta{
+      gap:8px;
+    }
+    .meta-chip span,
+    .field-chip,
+    .project-meta span{
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:break-word;
+      hyphens:auto;
+    }
+    .meta-chip{
+      max-width:100%;
+    }
+
+    /* 3. Project detail page: image and card sizing stay within the
+       screen, metadata wraps cleanly. */
+    .project-media img{
+      width:100%;
+      height:auto;
+      aspect-ratio:16/10;
+      object-fit:cover;
+      max-width:100%;
+    }
+    .case-card, .more-link{
+      max-width:100%;
+    }
+  }
+
+  @media (max-width:420px){
+    .container{ padding-inline:16px; }
   }
