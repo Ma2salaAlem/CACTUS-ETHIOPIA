@@ -81,7 +81,7 @@ window.PORTFOLIO = [
     slug: "heineken",
     title: "AFTER WORK",
     featured: true,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTpDkRGSB8J5d0Bf6rXBd5fqWg2gg0ruWXI9RYe0afY1DktxI5iLsdNa7H&s=10",
+    image: "https://www.heineken.com/media/0yggkooa/haw_schaatsbaan-4.jpg?width=1920&height=1080&quality=85&v=1dc0f600f19d320",
     client: "HSBC",
     brand: "Heineken Beer",
     category: "Alcoholic Beverages",
