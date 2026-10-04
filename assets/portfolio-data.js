@@ -81,7 +81,7 @@ window.PORTFOLIO = [
     slug: "heineken",
     title: "AFTER WORK",
     featured: true,
-    image: "https://acc-www.heinekenethiopia.com/wp-content/uploads/2024/05/2016-Heineken-local-production-768x432.webp",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTpDkRGSB8J5d0Bf6rXBd5fqWg2gg0ruWXI9RYe0afY1DktxI5iLsdNa7H&s=10",
     client: "HSBC",
     brand: "Heineken Beer",
     category: "Alcoholic Beverages",
