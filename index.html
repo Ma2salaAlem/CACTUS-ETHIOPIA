@@ -295,7 +295,7 @@
       var titleCase = item.title.charAt(0) + item.title.slice(1).toLowerCase();
       return (
         '<a class="work-card reveal" href="project.html?id=' + item.slug + '">' +
-          '<img src="' + item.image + '" alt="' + item.title + ' campaign visual — ' + item.client + '" loading="lazy">' +
+          '<img src="' + item.image + '" referrerpolicy="no-referrer" alt="' + item.title + ' campaign visual — ' + item.client + '" loading="lazy">' +
           '<div class="work-meta">' +
             '<span class="work-tag">' + item.fields[0] + '</span>' +
             '<h3 class="work-title">' + titleCase + '</h3>' +
